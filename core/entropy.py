@@ -10,7 +10,7 @@ def get_low_entropy_seed():
         if response.status_code == 200:
             return response.text.strip()
     except:
-        return str(random.random()) # Fallback
+        return str(random.random())
 
 def get_secure_secret():
     """Проверка энтропии на хосте (Linux) и генерация ключа."""

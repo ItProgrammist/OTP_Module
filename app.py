@@ -16,7 +16,7 @@ def main():
             if secret:
                 save_db(db)
                 print(f"{msg}. ВАШ СЕКРЕТНЫЙ КЛЮЧ: {secret}")
-                print("Добавьте его в Google Authenticator или используйте для генерации кодов.")
+                print("Добавьте его в Google Authenticator или https://totp.app/?lang=ru.")
             else:
                 print(f"Ошибка: {msg}")
 

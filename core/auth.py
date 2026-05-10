@@ -1,3 +1,4 @@
+import os
 import hashlib
 import pyotp
 from core.entropy import get_secure_secret
@@ -27,12 +28,12 @@ def verify_login(username, password, otp_code, db):
     if not user:
         return False, "Пользователь не найден"
     
-    # 1. чекаем хеша пароля
+    # чекаем хеша пароля
     check_hash, _ = hash_password(password, user["salt"])
     if check_hash != user["hash"]:
         return False, "Неверный пароль"
     
-    # 2. чекаем TOTP
+    # чекаем TOTP
     totp = pyotp.TOTP(user["totp_secret"])
     if totp.verify(otp_code):
         return True, "Успешный вход!"
